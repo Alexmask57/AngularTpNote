@@ -1,0 +1,15 @@
+<section [ngSwitch]="view">
+  <section *ngSwitchCase="'card'">
+    <carte [music]="music" (musicDelete)="delete($event)" (musicUpdate)="update($event)" *ngFor="let music of listMusic" ></carte>
+  </section>
+  <section *ngSwitchCase="'list'">
+    <p>coucou</p>
+  </section>
+</section>
+
+<section class="buttons-fab">
+  <button (click)="switchView()" mat-fab color="warn">
+    <em class="material-icons" *ngIf="view === 'card'">list</em>
+    <em class="material-icons" *ngIf="view === 'list'">view_stream</em>
+  </button>
+</section>

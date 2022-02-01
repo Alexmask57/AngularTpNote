@@ -22,7 +22,7 @@ import {MatTableModule} from "@angular/material/table";
 import { AjoutPopupComponent } from './list-music/ajout-popup/ajout-popup.component';
 import { FormulaireComponent } from './partage/formulaire/formulaire.component';
 import {MatDialogModule} from "@angular/material/dialog";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatRadioModule} from "@angular/material/radio";
 import {MatDatepickerModule} from "@angular/material/datepicker";
@@ -60,7 +60,8 @@ import {MatNativeDateModule} from "@angular/material/core";
     MatRadioModule,
     MatDatepickerModule,
     MatInputModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

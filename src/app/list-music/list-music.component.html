@@ -1,7 +1,12 @@
-<section>
-      <!--<input type="text"
+<section class="search">
+  <mat-form-field>
+      <mat-label>Rechercher par titre:</mat-label>
+      <input [(ngModel)]="search" type="text"
+             matInput
               placeholder="Rechercher..."
-              (input)="filter($event)">-->
+              (keyup)="filter($event)">
+
+  </mat-form-field>
 </section>
 
 

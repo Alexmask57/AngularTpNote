@@ -17,6 +17,7 @@ export class ListMusicComponent implements OnInit {
   columnMusic: string[] = ['id', 'title', 'album', 'artist', 'duration'];
   view: string = 'card';
   dialogStatus = 'inactive';
+  search: string ='';
 
   constructor(
     private readonly musicService: MusicServiceService,
@@ -73,9 +74,18 @@ export class ListMusicComponent implements OnInit {
     });
   }
 
-  /*filter($event) {
-    console.log("coucou");
-  }*/
+  filter($event: any) {
+    if(this.search.length > 0) {
+      this.musicService.search(this.search).subscribe(list => {
+        this.listMusic = list;
+      });
+    }
+    else {
+      this.musicService.fetch().subscribe(list => {
+        this.listMusic = list;
+      });
+    }
+  }
 
   hideDialog() {
     this.dialogStatus = 'inactive';

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {Music} from "../../../Model/music";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {COMMA, ENTER} from "@angular/cdk/keycodes";
@@ -13,7 +13,7 @@ export class FormulaireComponent implements OnInit {
 
   form: FormGroup;
   @Input() musicModel: Music;
-  // @ViewChild("fileInput") fileInput!: ElementRef;
+  @ViewChild("fileInput") fileInput!: ElementRef;
 
   @Output('cancel') cancelEvent$: EventEmitter<any>;
   @Output('submit') submitEvent$: EventEmitter<any>;
@@ -65,6 +65,19 @@ export class FormulaireComponent implements OnInit {
   removeChipset(titre: any): void {
     const index = this.musicModel.styles!.indexOf(titre);
     this.musicModel.styles!.splice(index, 1);
+  }
+
+  onFileSelected(event:Event | null) {
+    const files = (<HTMLInputElement>event?.currentTarget).files;
+    const file:File | null = files!.item(0);
+
+    if (file) {
+      let reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = (_event) => {
+        this.musicModel.picture = reader.result;
+      }
+    }
   }
 
   private static buildForm(): FormGroup {

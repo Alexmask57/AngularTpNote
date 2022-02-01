@@ -18,6 +18,7 @@ export class ListMusicComponent implements OnInit {
   ngOnInit(): void {
     this.musicService.fetch().subscribe(list =>{
       this.listMusic = list || [];
+      console.log(list);
     });
   }
 

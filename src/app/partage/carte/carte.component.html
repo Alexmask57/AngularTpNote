@@ -5,11 +5,8 @@
     <mat-card-subtitle>
       <mat-card-content>
         <mat-chip-list>
-          <mat-chip color="primary" *ngFor="let style of music?.style">
-            <mat-icon class="small">
-              work_outline
-            </mat-icon>
-            {{style}}
+          <mat-chip color="primary" *ngFor="let i of music?.style">
+            <p>{{i}}</p>
           </mat-chip>
         </mat-chip-list>
       </mat-card-content>
@@ -17,8 +14,24 @@
   </mat-card-header>
   <mat-card-content>
     <mat-card-subtitle class="info">
-      <mat-icon>phone</mat-icon>
-      <a href="tel:" title="Call">test</a>
+      <p>Description: </p>
+      <p title="description">{{music?.description}}</p>
+    </mat-card-subtitle>
+    <mat-card-subtitle class="info">
+      <p>Album: </p>
+      <p title="album">{{music?.album}}</p>
+    </mat-card-subtitle>
+    <mat-card-subtitle class="info">
+      <p>Artiste: </p>
+      <p title="album">{{music?.artist}}</p>
+    </mat-card-subtitle>
+    <mat-card-subtitle class="info">
+      <p>Durée: </p>
+      <p title="album">{{music?.duration}}</p>
+    </mat-card-subtitle>
+    <mat-card-subtitle class="info">
+      <p>Date de sortie: </p>
+      <p title="album">{{music?.date}}</p>
     </mat-card-subtitle>
   </mat-card-content>
 

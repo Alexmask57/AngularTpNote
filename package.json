@@ -4,7 +4,7 @@
   "scripts": {
     "start": "concurrently \"npm run server\" \"npm run client\"",
     "ng": "ng",
-    "server": "node --experimental-json-modules _server/server.js",
+    "server": "cd tp-note-angular-backend && npm start ",
     "client": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",

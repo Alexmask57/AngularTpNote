@@ -2,17 +2,17 @@
   <mat-card-header>
     <img *ngIf="music.picture" mat-card-avatar src="{{music?.picture}}" alt="Avatar de l'employé"/>
     <mat-card-title>{{music?.title}}</mat-card-title>
-    <mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-card-subtitle class="style">
       <mat-card-content>
         <mat-chip-list>
-          <mat-chip color="primary" *ngFor="let i of music?.style">
-            <p>{{i}}</p>
+          <mat-chip color="primary" *ngFor="let type of music?.styles">
+            {{type}}
           </mat-chip>
         </mat-chip-list>
       </mat-card-content>
     </mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
     <mat-card-subtitle class="info">
       <p>Description: </p>
       <p title="description">{{music?.description}}</p>
@@ -36,10 +36,8 @@
   </mat-card-content>
 
   <mat-card-actions align="end">
-<!--
-    <button mat-mini-fab aria-label="Editer" color="accent" [routerLink]="['/edit', employe.id]">
--->
-    <button mat-mini-fab aria-label="Editer" color="accent">
+
+    <button mat-mini-fab aria-label="Editer" color="accent" [routerLink]="['/edit', music.id]">
       <mat-icon>edit</mat-icon>
     </button>
     <button mat-mini-fab aria-label="Supprimer" color="warn" (click)="delete()">

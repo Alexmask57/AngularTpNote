@@ -1,7 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Music} from "../../../Model/music";
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {COMMA, ENTER} from "@angular/cdk/keycodes";
+import {MatChipInputEvent} from "@angular/material/chips";
 
 @Component({
   selector: 'formulaire',
@@ -24,7 +25,7 @@ export class FormulaireComponent implements OnInit {
     this.cancelEvent$ = new EventEmitter();
     this.form = FormulaireComponent.buildForm();
     this.musicModel = {
-      style: []
+      styles: []
     };
   }
 
@@ -38,7 +39,7 @@ export class FormulaireComponent implements OnInit {
       artist: this.musicModel.artist,
       duration: this.musicModel.duration,
       date: this.musicModel.date,
-      style: this.musicModel.style || [],
+      styles: this.musicModel.styles || [],
       picture: this.musicModel.picture
     });
   }
@@ -47,23 +48,35 @@ export class FormulaireComponent implements OnInit {
     this.cancelEvent$.emit();
   }
 
-  submit(music: Music) { //Formulaire
+  submit(music: Music) {
     music.picture = this.musicModel.picture;
     this.submitEvent$.emit(music);
   }
 
+
+  addChipset(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
+    if (value) {
+      this.musicModel.styles!.push(value);
+    }
+    event.chipInput!.clear();
+  }
+
+  removeChipset(titre: any): void {
+    const index = this.musicModel.styles!.indexOf(titre);
+    this.musicModel.styles!.splice(index, 1);
+  }
+
   private static buildForm(): FormGroup {
     return new FormGroup({
-/*
       id: new FormControl(''),
-      title: new FormControl('', Validators.compose([Validators.required, Validators.minLength(1)])),
+      title: new FormControl('', Validators.compose([Validators.required, Validators.minLength(2)])),
       description: new FormControl(''),
       album: new FormControl(''),
-      artist: new FormControl('', Validators.required),
+      artist: new FormControl('', Validators.compose([Validators.required, Validators.minLength(2)])),
       duration: new FormControl(''),
-      date: new FormControl('', Validators.compose([Validators.required, Validators.pattern('\\d{10}')])),
-      style: new FormControl('')
-*/
+      date: new FormControl(''),
+      styles: new FormControl('')
     });
   }
 }

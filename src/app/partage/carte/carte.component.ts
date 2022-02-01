@@ -8,14 +8,14 @@ import {Music} from "../../../Model/music";
 })
 export class CarteComponent implements OnInit {
 
-  @Input() music: Music;
+  @Input() music!: Music;
 
   @Output('musicDelete') delete$: EventEmitter<any> = new EventEmitter();
 
   @Output('musicUpdate') update$: EventEmitter<any> = new EventEmitter();
 
   constructor() {
-    this.music = {};
+    //this.music = {};
   }
 
   ngOnInit(): void {

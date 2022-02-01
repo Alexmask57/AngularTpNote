@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DrawerComponent } from './drawer/drawer.component';
-import { AccueilComponent } from './accueil/accueil.component';
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
 import {MatIconModule} from "@angular/material/icon";
@@ -19,17 +18,28 @@ import {MatCardModule} from "@angular/material/card";
 import {MatChipsModule} from "@angular/material/chips";
 import { EditionComponent } from './list-music/edition/edition.component';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {MatTableModule} from "@angular/material/table";
+import { AjoutPopupComponent } from './list-music/ajout-popup/ajout-popup.component';
+import { FormulaireComponent } from './partage/formulaire/formulaire.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatRadioModule} from "@angular/material/radio";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatInputModule} from "@angular/material/input";
+import {MatNativeDateModule} from "@angular/material/core";
 
 @NgModule({
   declarations: [
     AppComponent,
     DrawerComponent,
-    AccueilComponent,
     HeaderComponent,
     ListMusicComponent,
     CarteComponent,
     AleatoireMusicComponent,
-    EditionComponent
+    EditionComponent,
+    AjoutPopupComponent,
+    FormulaireComponent
   ],
   imports: [
     HttpClientModule,
@@ -42,7 +52,15 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
     MatToolbarModule,
     MatButtonModule,
     MatCardModule,
-    MatChipsModule
+    MatChipsModule,
+    MatTableModule,
+    MatDialogModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatRadioModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]
